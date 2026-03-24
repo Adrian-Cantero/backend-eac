@@ -11,19 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modulos', function (Blueprint $table) {
+        Schema::create('ecosistemas_laborales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ciclo_formativo_id')
-                  ->nullable()
-                  ->constrained('ciclos_formativos')
+            $table->foreignId('modulo_id')
+                  ->constrained('modulos')
                   ->cascadeOnDelete();
             $table->string('nombre');
-            $table->string('codigo', 20);
-            $table->unsignedSmallInteger('horas_totales')->default(0);
+            $table->string('codigo', 20)->unique();
             $table->text('descripcion')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
-
-            $table->unique(['ciclo_formativo_id', 'codigo']);
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modulos');
+        Schema::dropIfExists('ecosistemas_laborales');
     }
 };
