@@ -49,7 +49,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles(): BelongsToMany
+    public function userRoles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'user_roles')
             ->withPivot('ecosistema_laboral_id')
@@ -82,5 +82,11 @@ class User extends Authenticatable
         return $this->perfilesHabilitacion()
             ->where('ecosistema_laboral_id', $ecosistema->id)
             ->first();
+    }
+
+    public function hasRole(string $role): bool
+    {
+        // Se usa la relación 'roles' definida en el modelo User
+        return $this->userRoles()->where('name', $role)->exists();
     }
 }
