@@ -9,12 +9,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Modulo extends Model
 {
     protected $fillable = [
-        'ciclo_formativo_id', 'nombre', 'codigo', 'horas_totales', 'descripcion',
+        'ciclo_formativo_id',
+        'nombre',
+        'codigo',
+        'horas_totales',
+        'descripcion'
     ];
+
+    protected $table = 'modulos';
 
     public function cicloFormativo(): BelongsTo
     {
-        return $this->belongsTo(CicloFormativo::class);
+        return $this->belongsTo(CicloFormativo::class, 'ciclo_formativo_id');
     }
 
     public function ecosistemasLaborales(): HasMany
@@ -25,5 +31,10 @@ class Modulo extends Model
     public function resultadosAprendizaje(): HasMany
     {
         return $this->hasMany(ResultadoAprendizaje::class);
+    }
+
+    public function matriculas(): HasMany
+    {
+        return $this->hasMany(Matricula::class);
     }
 }

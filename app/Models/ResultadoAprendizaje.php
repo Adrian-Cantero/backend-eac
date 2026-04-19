@@ -9,13 +9,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ResultadoAprendizaje extends Model
 {
     protected $fillable = [
-        'modulo_id', 'codigo', 'descripcion',
+        'modulo_id',
+        'codigo',
+        'descripcion',
+        'peso_porcentaje',
+        'orden'
     ];
+
     protected $table = 'resultados_aprendizaje';
 
     public function modulo(): BelongsTo
     {
-        return $this->belongsTo(Modulo::class);
+        return $this->belongsTo(Modulo::class, 'modulo_id');
     }
 
     public function criteriosEvaluacion(): HasMany

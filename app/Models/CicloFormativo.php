@@ -13,7 +13,7 @@ class CicloFormativo extends Model
 
     public function familiaProfesional(): BelongsTo
     {
-        return $this->belongsTo(FamiliaProfesional::class);
+        return $this->belongsTo(FamiliaProfesional::class, 'familia_profesional_id');
     }
 
     public function modulos(): HasMany

@@ -12,7 +12,7 @@ Route::get('/', Publico\PortadaController::class)
     ->name('publico.portada');
 
 Route::prefix('modulos')->name('publico.modulos.')->group(function () {
-    Route::get('/',         [Publico\ModuloController::class, 'index'])->name('index');
+    Route::get('/', [Publico\ModuloController::class, 'index'])->name('index');
     Route::get('/{modulo}', [Publico\ModuloController::class, 'show'])->name('show');
 });
 
@@ -24,8 +24,9 @@ Route::middleware(['auth', 'role:estudiante'])
     ->prefix('estudiante')
     ->name('estudiante.')
     ->group(function () {
-        Route::get('/dashboard',          Estudiante\DashboardController::class)->name('dashboard');
-        Route::get('/perfil/{perfil}',    Estudiante\PerfilController::class)->name('perfil.show');
+        Route::get('/dashboard', Estudiante\DashboardController::class)->name('dashboard');
+        Route::get('/perfil/{perfil}', Estudiante\PerfilController::class)->name('perfil.show');
+        Route::get('/modulos', Estudiante\ModuloController::class)->name('modulos.index');
     });
 
 // ─── Rutas del docente ────────────────────────────────────────────────────────

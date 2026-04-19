@@ -9,6 +9,8 @@ class Role extends Model
 {
     protected $fillable = ['name', 'description'];
 
+    protected $table = 'roles';
+
     public function ecosistemaLaboral(): BelongsTo
     {
         return $this->belongsTo(EcosistemaLaboral::class, 'ecosistema_laboral_id');
