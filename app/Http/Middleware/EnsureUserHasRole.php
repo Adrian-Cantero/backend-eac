@@ -16,7 +16,8 @@ class EnsureUserHasRole
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if (!$request->user()?->userRoles()->where('name', $role)->exists()) {
-            abort(403, 'Acceso no autorizado para este rol.');
+            // abort(403, 'Acceso no autorizado para este rol.');
+            redirect('/login')->with('error', 'Acceso no autorizado a la zona rol de ' . $role);
         }
 
         return $next($request);

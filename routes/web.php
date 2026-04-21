@@ -27,6 +27,7 @@ Route::middleware(['auth', 'role:estudiante'])
         Route::get('/dashboard', Estudiante\DashboardController::class)->name('dashboard');
         Route::get('/perfil/{perfil}', Estudiante\PerfilController::class)->name('perfil.show');
         Route::get('/modulos', Estudiante\ModuloController::class)->name('modulos.index');
+        Route::get('/modulos/{modulo}', Estudiante\ModuloController::class, 'show')->name('modulo');
     });
 
 // ─── Rutas del docente ────────────────────────────────────────────────────────
