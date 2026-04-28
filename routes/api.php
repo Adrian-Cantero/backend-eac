@@ -8,11 +8,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('perfil/{ecosistema}/zdp', V1\Estudiante\ZdpController::class)
-        ->name('zdp');
-});
-
 Route::prefix('v1')->name('api.v1.')->group(function () {
 
     // ── Públicos ────────────────────────────────────────────────────────────────
@@ -35,6 +30,8 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
                 ->name('perfil.show');
             Route::post('matriculas',           V1\Estudiante\MatriculaController::class)
                 ->name('matriculas.store');
+            Route::get('perfil/{ecosistema}/zdp', V1\Estudiante\ZdpController::class)
+                ->name('zdp');
         });
 
         // Docente

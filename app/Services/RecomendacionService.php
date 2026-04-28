@@ -1,6 +1,5 @@
-// app/Services/RecomendacionService.php
 <?php
-
+// app/Services/RecomendacionService.php
 namespace App\Services;
 
 use App\Models\EcosistemaLaboral;
