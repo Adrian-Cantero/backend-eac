@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\EcosistemaLaboral;
+use App\Models\Modulo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,11 @@ class EcosistemaLaboralFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'modulo_id' => Modulo::factory(),
+            'nombre' => $this->faker->sentence(3),
+            'codigo' => $this->faker->unique()->bothify('####'),
+            'descripcion' => $this->faker->paragraph(),
+            'activo' => true,
         ];
     }
 }

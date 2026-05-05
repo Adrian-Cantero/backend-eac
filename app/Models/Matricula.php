@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Matricula extends Model
 {
+    use HasFactory;
+
     protected $table = 'matriculas';
 
     protected $fillable = [
         'estudiante_id',
-        'modulo_formativo_id'
+        'modulo_id'
     ];
 
     public function estudiante(): BelongsTo
