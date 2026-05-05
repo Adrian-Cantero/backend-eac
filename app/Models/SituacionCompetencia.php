@@ -46,8 +46,8 @@ class SituacionCompetencia extends Model
         return $this->belongsToMany(CriterioEvaluacion::class, 'sc_criterios_evaluacion', 'situacion_competencia_id', 'criterio_evaluacion_id')->withPivot('peso_en_sc');
     }
 
-    public function perfilesHabilitacion(): BelongsToMany
+    public function perfilesHabilitacion(): HasMany
     {
-        return $this->belongsToMany(PerfilSituacion::class, 'situacion_competencia_id');
+        return $this->hasMany(PerfilSituacion::class, 'situacion_competencia_id');
     }
 }

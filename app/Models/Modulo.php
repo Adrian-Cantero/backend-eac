@@ -23,7 +23,7 @@ class Modulo extends Model
 
     public function cicloFormativo(): BelongsTo
     {
-        return $this->belongsTo(CicloFormativo::class, 'ciclo_formativo_id');
+        return $this->belongsTo(CicloFormativo::class);
     }
 
     public function ecosistemasLaborales(): HasMany
