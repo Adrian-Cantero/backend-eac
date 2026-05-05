@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CicloFormativo;
 use App\Models\Modulo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +19,7 @@ class ModuloFactory extends Factory
     public function definition(): array
     {
         return [
+            'ciclo_formativo_id' => CicloFormativo::factory(),
             'nombre' => $this->faker->sentence(4),
             'codigo' => $this->faker->unique()->randomNumber(4, false),
             'horas_totales' => $this->faker->randomDigit(),
